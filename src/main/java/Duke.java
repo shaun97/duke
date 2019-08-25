@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Duke {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        Commands c = new Commands();
+        TaskList c = new TaskList();
 
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -18,10 +18,12 @@ public class Duke {
             if (s.equals("bye")) {
                 System.out.print("Bye. Hope to see you again soon!");
                 System.exit(0);
-            } else if (s.equals("list")){
-                c.getCommands();
+            } else if (s.equals("list")) {
+                c.getTasks();
+            } else if (s.contains("done")) {
+                c.markTasks(Integer.parseInt(s.substring(5)));
             } else {
-                c.storeCommands(s);
+                c.storeTasks(s);
                 System.out.println("added: " + s);
             }
         }
