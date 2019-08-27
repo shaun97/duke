@@ -21,7 +21,7 @@ public class Duke {
             } else if (s.equals("list")) {
                 c.getTasks();
             } else if (s.contains("done")) {
-                c.markTasks(Integer.parseInt(s.substring(5)));
+                c.markTasks(Integer.parseInt(s.substring(5)) - 1);
             } else {
                 c.storeTasks(s);
                 System.out.println("added: " + s);
