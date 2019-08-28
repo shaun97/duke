@@ -16,10 +16,10 @@ public class Duke {
         while (true) {
             String s = in.nextLine();
             if (s.equals("bye")) {
-                FileManager f = new FileManager(l);
-                f.insertToFile(l.get(0));
+                //FileManager f = new FileManager(l);
+                //f.insertToFile(l.get(0));
                 System.out.print("Bye. Hope to see you again soon!");
-                //System.exit(0);
+                System.exit(0);
             } else if (s.equals("list")) {
                 System.out.println("    Here are the tasks in your list:");
                 for (int i = 1; i <= l.size(); i++) {
@@ -30,7 +30,6 @@ public class Duke {
                 System.out.println("    Nice! I've marked this task as done:");
                 System.out.println("      " + l.get(Integer.parseInt(s.substring(5)) - 1).toString());
             } else if (s.contains("todo")) {
-<<<<<<< HEAD
                 try {
                     Task temp = new Todo(s.substring(5));
                     l.add(temp);
@@ -63,30 +62,8 @@ public class Duke {
                 } catch (Exception e) {
                     System.out.println("    \u2639 OOPS!! The description of a event cannot be empty.");
                 }
-
             } else {
                 System.out.println("    \u2639 OOPS!! I'm sorry, but I don't know what that means :-(");
-=======
-                Task temp = new Todo(s.substring(5));
-                l.add(temp);
-                System.out.println("    Got it. I've added this task:");
-                System.out.println("      " + temp.toString());
-                System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");
-            } else if (s.contains("deadline")) {
-                String[] parts = s.substring(9).split("/");
-                Task temp = new Event(parts[0], parts[1]);
-                l.add(temp);
-                System.out.println("    Got it. I've added this task:");
-                System.out.println("      " + temp.toString());
-                System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");
-            }  else if (s.contains("event")) {
-                String[] parts = s.substring(6).split("/");
-                Task temp = new Event(parts[0], parts[1]);
-                l.add(temp);
-                System.out.println("    Got it. I've added this task:");
-                System.out.println("      " + temp.toString());
-                System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");
->>>>>>> parent of a6fb0d8... Level 5: Handle Errors
             }
         }
     }
