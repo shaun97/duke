@@ -1,9 +1,12 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 public class Duke {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         List<Task> l = new ArrayList<>();
+        FileManager f = new FileManager(l);
 
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -16,9 +19,7 @@ public class Duke {
         while (true) {
             String s = in.nextLine();
             if (s.equals("bye")) {
-                //FileManager f = new FileManager(l);
-                //f.insertToFile(l.get(0));
-                System.out.print("Bye. Hope to see you again soon!");
+                System.out.println("Bye. Hope to see you again soon!");
                 System.exit(0);
             } else if (s.equals("list")) {
                 System.out.println("    Here are the tasks in your list:");
@@ -26,13 +27,20 @@ public class Duke {
                     System.out.println("    " + i + "." + l.get(i - 1).toString());
                 }
             } else if (s.contains("done")) {
-                l.get(Integer.parseInt(s.substring(5)) - 1).markDone();
-                System.out.println("    Nice! I've marked this task as done:");
-                System.out.println("      " + l.get(Integer.parseInt(s.substring(5)) - 1).toString());
+                try {
+                    int index = Integer.parseInt(s.substring(5));
+                    l.get(index - 1).markDone();
+                    f.updateFile();
+                    System.out.println("    Nice! I've marked this task as done:");
+                    System.out.println("      " + l.get(Integer.parseInt(s.substring(5)) - 1).toString());
+                } catch (Exception e) {
+                    System.out.println("    \u2639 OOPS!! Please specify what you did.");
+                }
             } else if (s.contains("todo")) {
                 try {
-                    Task temp = new Todo(s.substring(5));
+                    Task temp = new Todo(s.substring(5), false);
                     l.add(temp);
+                    f.insertToFile(temp);
                     System.out.println("    Got it. I've added this task:");
                     System.out.println("      " + temp.toString());
                     System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");
@@ -42,9 +50,10 @@ public class Duke {
 
             } else if (s.contains("deadline")) {
                 try {
-                    String[] parts = s.substring(8).split("/");
-                    Task temp = new Deadline(parts[0], parts[1]);
+                    String[] parts = s.substring(9).split("/");
+                    Task temp = new Deadline(parts[0], parts[1], false);
                     l.add(temp);
+                    f.insertToFile(temp);
                     System.out.println("    Got it. I've added this task:");
                     System.out.println("      " + temp.toString());
                     System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");
@@ -54,8 +63,9 @@ public class Duke {
             } else if (s.contains("event")) {
                 try {
                     String[] parts = s.substring(6).split("/");
-                    Task temp = new Event(parts[0], parts[1]);
+                    Task temp = new Event(parts[0], parts[1], false);
                     l.add(temp);
+                    f.insertToFile(temp);
                     System.out.println("    Got it. I've added this task:");
                     System.out.println("      " + temp.toString());
                     System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");

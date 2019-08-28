@@ -2,14 +2,14 @@ public class Event extends Task {
 
     private String at;
 
-    public Event(String description, String by) {
-        super(description);
-        this.at = by;
+    public Event(String description, String at, boolean isDone) {
+        super(description, isDone);
+        this.at = at;
     }
 
     @Override
     public String toStore() {
-        return "E|" + (super.getIsDone() ? "1|" : "0|") + super.getDescription();
+        return "E~" + (super.getIsDone() ? "1~" : "0~") + super.getDescription() + "/" + at;
     }
 
 
