@@ -16,10 +16,10 @@ public class Duke {
         while (true) {
             String s = in.nextLine();
             if (s.equals("bye")) {
-                FileManager f = new FileManager(l);
-                f.insertToFile(l.get(0));
+                //FileManager f = new FileManager(l);
+                //f.insertToFile(l.get(0));
                 System.out.print("Bye. Hope to see you again soon!");
-                //System.exit(0);
+                System.exit(0);
             } else if (s.equals("list")) {
                 System.out.println("    Here are the tasks in your list:");
                 for (int i = 1; i <= l.size(); i++) {
