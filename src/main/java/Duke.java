@@ -16,8 +16,10 @@ public class Duke {
         while (true) {
             String s = in.nextLine();
             if (s.equals("bye")) {
+                FileManager f = new FileManager(l);
+                f.insertToFile(l.get(0));
                 System.out.print("Bye. Hope to see you again soon!");
-                System.exit(0);
+                //System.exit(0);
             } else if (s.equals("list")) {
                 System.out.println("    Here are the tasks in your list:");
                 for (int i = 1; i <= l.size(); i++) {
@@ -29,7 +31,7 @@ public class Duke {
                 System.out.println("      " + l.get(Integer.parseInt(s.substring(5)) - 1).toString());
             } else if (s.contains("todo")) {
                 try {
-                    Task temp = new Todo(s.substring(6));
+                    Task temp = new Todo(s.substring(5));
                     l.add(temp);
                     System.out.println("    Got it. I've added this task:");
                     System.out.println("      " + temp.toString());
@@ -40,8 +42,8 @@ public class Duke {
 
             } else if (s.contains("deadline")) {
                 try {
-                    String[] parts = s.substring(9).split("/");
-                    Task temp = new Event(parts[0], parts[1]);
+                    String[] parts = s.substring(8).split("/");
+                    Task temp = new Deadline(parts[0], parts[1]);
                     l.add(temp);
                     System.out.println("    Got it. I've added this task:");
                     System.out.println("      " + temp.toString());

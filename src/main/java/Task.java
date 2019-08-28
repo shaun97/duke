@@ -14,8 +14,13 @@ public class Task {
     public String getDescription() {
         return description;
     }
+    public boolean getIsDone() { return isDone; }
 
     public void markDone() {
         this.isDone = true;
+    }
+
+    public String toStore() {
+        return isDone ? "1|" : "0|" + description;
     }
 }
