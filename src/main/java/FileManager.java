@@ -1,4 +1,5 @@
 import java.io.*;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class FileManager {
                 file.createNewFile();
             }
 
-            String line = scanner.nextLine();
+            String line = null;
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
                 String[] w = line.split("~"); // | counts as well
@@ -28,15 +29,14 @@ public class FileManager {
                     boolean isDone = (w[1].equals("1"));
                     l.add(new Todo(description, isDone));
                 } else if (w[0].equals("E")) {
-                    String[] parts = w[2].split("/");
+                    String[] parts = w[2].split("/at ");
                     boolean isDone = (w[1].equals("1"));
                     l.add(new Event(parts[0], parts[1], isDone));
                 } else if (w[0].equals("D")) {
-                    String[] parts = w[2].split("/");
+                    String[] parts = w[2].split("/by ");
                     boolean isDone = (w[1].equals("1"));
                     l.add(new Deadline(parts[0], parts[1], isDone));
                 }
-
             }
         } catch (IOException ioe) {
             ioe.printStackTrace();

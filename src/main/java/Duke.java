@@ -50,7 +50,7 @@ public class Duke {
 
             } else if (s.contains("deadline")) {
                 try {
-                    String[] parts = s.substring(9).split("/");
+                    String[] parts = s.substring(9).split("/by ");
                     Task temp = new Deadline(parts[0], parts[1], false);
                     l.add(temp);
                     f.insertToFile(temp);
@@ -62,7 +62,7 @@ public class Duke {
                 }
             } else if (s.contains("event")) {
                 try {
-                    String[] parts = s.substring(6).split("/");
+                    String[] parts = s.substring(6).split("/at ");
                     Task temp = new Event(parts[0], parts[1], false);
                     l.add(temp);
                     f.insertToFile(temp);
