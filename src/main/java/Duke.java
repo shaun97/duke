@@ -70,9 +70,20 @@ public class Duke {
                     System.out.println("      " + temp.toString());
                     System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");
                 } catch (Exception e) {
+
+                }
+            } else if (s.contains("delete")) {
+                try {
+                    int index = Integer.parseInt(s.substring(7)) - 1;
+                    System.out.println("    Noted. I've removed this task:");
+                    System.out.println("      " + l.get(index).toString());
+                    l.remove(index);
+                    System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");
+                    f.updateFile();
+                } catch (Exception e) {
                     System.out.println("    \u2639 OOPS!! The description of a event cannot be empty.");
                 }
-            } else {
+            } else{
                 System.out.println("    \u2639 OOPS!! I'm sorry, but I don't know what that means :-(");
             }
         }
