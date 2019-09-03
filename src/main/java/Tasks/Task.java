@@ -14,7 +14,9 @@ public class Task {
     public String getDescription() {
         return description;
     }
-    public boolean getIsDone() { return isDone; }
+    public boolean getIsDone() {
+        return isDone;
+    }
 
     public void markDone() {
         this.isDone = true;
