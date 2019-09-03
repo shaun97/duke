@@ -83,8 +83,23 @@ public class Duke {
                 } catch (Exception e) {
                     System.out.println("    \u2639 OOPS!! The description of a event cannot be empty.");
                 }
-            } else{
-                System.out.println("    \u2639 OOPS!! I'm sorry, but I don't know what that means :-(");
+            } else if (s.contains("find")) {
+                String query = s.substring(5);
+                int index = 1;
+                boolean haveMatch = false;
+                System.out.println("    Here are the matching tasks in your list:");
+                for (int i = 0; i < l.size(); i++) {
+                    if (l.get(i).toString().contains(query)) {
+                        System.out.println("    " + index + "." + l.get(i).toString());
+                        haveMatch = true;
+                        index++;
+                    }
+                }
+                if (!haveMatch) {
+                    System.out.println("    Sorry... there are no tasks matching your query");
+                } else {
+                    System.out.println("    \u2639 OOPS!! I'm sorry, but I don't know what that means :-(");
+                }
             }
         }
     }
