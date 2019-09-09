@@ -1,7 +1,10 @@
+import Exceptions.*;
 import Tasks.Deadline;
 import Tasks.Event;
 import Tasks.Task;
 import Tasks.Todo;
+
+import java.text.ParseException;
 
 public class Parser {
     private TaskList l;
@@ -11,53 +14,69 @@ public class Parser {
     }
 
     public void Logic(String Command) {
-        if (Command.equals("bye")) {
-            System.out.println("Bye. Hope to see you again soon!");
-            System.exit(0);
-        } else if (Command.equals("list")) {
-            l.listTask();
-        } else if (Command.contains("done")) {
-            try {
-                int index = Integer.parseInt(Command.substring(5));
-                l.markDone(index);
-            } catch (Exception e) {
-                System.out.println("    \u2639 OOPS!! Please specify what you did.");
-            }
-        } else if (Command.contains("todo")) {
-            try {
-                Task temp = new Todo(Command.substring(5), false);
-                l.addTask(temp);
-            } catch (Exception e) {
-                System.out.println("    \u2639 OOPS!! The description of a todo cannot be empty.");
-            }
-        } else if (Command.contains("deadline")) {
-            try {
-                String[] parts = Command.substring(9).split("/by ");
-                Task temp = new Deadline(parts[0], parts[1], false);
-                l.addTask(temp);
-            } catch (Exception e) {
-                System.out.println("    \u2639 OOPS!! The description of a deadline cannot be empty.");
-            }
-        } else if (Command.contains("event")) {
-            try {
+
+        try {
+            if (Command.equals("bye")) {
+                System.out.println("Bye. Hope to see you again soon!");
+                System.exit(0);
+            } else if (Command.equals("list")) {
+                l.listTask();
+            } else if (Command.startsWith("done")) {
+                String[] data = Command.split(" ");
+                if (data.length < 2) {
+                    throw new InvalidTaskIndexException();
+                } else {
+                    l.markDone(Integer.parseInt(data[1]));
+                }
+            } else if (Command.contains("todo")) {
+                String[] query = Command.split("todo ");
+                if (query.length < 2) {
+                    throw new InvalidToDoException();
+                } else {
+                    Task temp = new Todo(query[1], false);
+                    l.addTask(temp);
+                }
+            } else if (Command.contains("deadline")) {
+                String[] parts = Command.substring(8).split("/by ");
+                if (parts[0].length() < 2) {
+                    throw new InvalidDeadlineException();
+                } else if (parts.length < 2) {
+                    throw new InvalidDateException();
+                } else {
+                    Task temp = new Deadline(parts[0], parts[1], false);
+                    l.addTask(temp);
+                }
+            } else if (Command.contains("event")) {
                 String[] parts = Command.substring(6).split("/at ");
-                Task temp = new Event(parts[0], parts[1], false);
-                l.addTask(temp);
-            } catch (Exception e) {
-                System.out.println("    \u2639 OOPS!! The description of a deadline cannot be empty.");
+                if (parts[0].length() < 2) {
+                    throw new InvalidEventException();
+                } else if (parts.length < 2) {
+                    throw new InvalidDateException();
+                } else {
+                    Task temp = new Event(parts[0], parts[1], false);
+                    l.addTask(temp);
+                }
+            } else if (Command.startsWith("delete")) {
+                String[] data = Command.split(" ");
+                if (data.length < 2) {
+                    throw new InvalidTaskIndexException();
+                } else {
+                    l.deleteTask(Integer.parseInt(data[1]) - 1);
+                }
+            } else if (Command.startsWith("find")) {
+                String[] query = Command.split("find ");
+                if (query.length < 2) {
+                    throw new InvalidFindException();
+                } else {
+                    l.findTask(query[1]);
+                }
+            } else {
+                throw new InvalidCommandException();
             }
-        } else if (Command.contains("delete")) {
-            try {
-                int index = Integer.parseInt(Command.substring(7)) - 1;
-                l.deleteTask(index);
-            } catch (Exception e) {
-                System.out.println("    \u2639 OOPS!! The description of a event cannot be empty.");
-            }
-        } else if (Command.contains("find")) {
-            String query = Command.substring(5);
-            l.findTask(query);
-        } else {
-            System.out.println("    \u2639 OOPS!! I'm sorry, but I don't know what that means :-(");
+        } catch (NumberFormatException e) {
+            System.out.println("    \u2639 OOPS!! Please input a valid number");
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
     }
 }

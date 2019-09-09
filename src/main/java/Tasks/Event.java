@@ -14,6 +14,7 @@ public class Event extends Task {
         super(description, isDone);
         this.at = at;
         storeDate(at);
+
     }
 
     public void storeDate(String by) {
@@ -23,7 +24,6 @@ public class Event extends Task {
             date = df.parse(by);
             System.out.println(date);
         } catch (ParseException e) {
-            e.printStackTrace();
         }
         date = convertedDate;
     }
@@ -32,7 +32,6 @@ public class Event extends Task {
     public String toStore() {
         return "E~" + (super.getIsDone() ? "1~" : "0~") + super.getDescription() + "/at " + at;
     }
-
 
     public String toString() {
         return "[E]" + super.getStatusIcon() + super.getDescription() + " (at: " + at + ")";

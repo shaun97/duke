@@ -23,7 +23,6 @@ public class Deadline extends Task {
             date = df.parse(by);
             System.out.println(date);
         } catch (ParseException e) {
-            e.printStackTrace();
         }
         date = convertedDate;
     }
