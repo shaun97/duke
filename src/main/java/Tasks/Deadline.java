@@ -21,7 +21,6 @@ public class Deadline extends Task {
         Date convertedDate = new Date();
         try {
             date = df.parse(by);
-            System.out.println(date);
         } catch (ParseException e) {
         }
         date = convertedDate;

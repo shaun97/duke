@@ -18,11 +18,12 @@ public class Storage {
     public void loadData() { //if no file
         try {
             File file = new File("data/duke.txt");
-            Scanner scanner = new Scanner(file);
 
             if (!file.exists()) {
                 file.createNewFile();
             }
+
+            Scanner scanner = new Scanner(file);
 
             String line = null;
             while (scanner.hasNextLine()) {
@@ -43,7 +44,6 @@ public class Storage {
                 }
             }
         } catch (IOException ioe) {
-            ioe.printStackTrace();
         }
     }
 
