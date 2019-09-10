@@ -17,6 +17,12 @@ public class Event extends Task {
 
     }
 
+    /**
+     * This function takes in the date in string format and converts it into
+     * a date class.
+     *
+     * @param by
+     */
     public void storeDate(String by) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy HHmm");
         Date convertedDate = new Date();
@@ -27,11 +33,21 @@ public class Event extends Task {
         date = convertedDate;
     }
 
+    /**
+     * This function converts the Event task into the format for storage.
+     *
+     * @return
+     */
     @Override
     public String toStore() {
         return "E~" + (super.getIsDone() ? "1~" : "0~") + super.getDescription() + "/at " + at;
     }
 
+    /**
+     * This function prints out this Event task into the command line
+     *
+     * @return
+     */
     public String toString() {
         return "[E]" + super.getStatusIcon() + super.getDescription() + " (at: " + at + ")";
     }

@@ -10,6 +10,11 @@ public class Todo extends Task {
         return "T~" + (super.getIsDone() ? "1~" : "0~") + super.getDescription();
     }
 
+    /**
+     * This function prints out the task onto the command line.
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "[T]" + super.getStatusIcon() + super.getDescription();

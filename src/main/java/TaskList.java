@@ -7,6 +7,12 @@ public class TaskList {
     List<Task> l = new ArrayList<>();
     Storage f = new Storage(l);
 
+    /**
+     * This function adds a task into the ArrayList of tasks, calls the function to update
+     * the txt file and prints out the relevant reply.
+     *
+     * @param t
+     */
     public void addTask(Task t) {
         l.add(t);
         f.updateFile();
@@ -15,6 +21,13 @@ public class TaskList {
         System.out.println("    Now you have " + l.size() + ((l.size() == 1) ? " task" : " tasks") + " in the list.");
     }
 
+    /**
+     * This program takes in an index and marks the corresponding task as done,
+     * it then updates the file and prints out the relevant reply
+     *
+     * @param index
+     */
+
     public void markDone(int index) {
         l.get(index - 1).markDone();
         f.updateFile();
@@ -22,6 +35,9 @@ public class TaskList {
         System.out.println("      " + l.get(index - 1).toString());
     }
 
+    /**
+     * This function prints out all the tasks in the list.
+     */
     public void listTask() {
         System.out.println("    Here are the tasks in your list:");
         for (int i = 1; i <= l.size(); i++) {
@@ -29,6 +45,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * This function takes in an index and deletes the respective task from the list,
+     * updates the storage and prints out the relevant reply.
+     *
+     * @param index
+     */
     public void deleteTask(int index) {
         System.out.println("    Noted. I've removed this task:");
         System.out.println("      " + l.get(index).toString());
@@ -37,6 +59,12 @@ public class TaskList {
         f.updateFile();
     }
 
+    /**
+     * This function takes in a String query and searches through the tasklist and prints out the matching
+     * tasks.
+     *
+     * @param query
+     */
     public void findTask(String query) {
         int index = 1;
         boolean haveMatch = false;

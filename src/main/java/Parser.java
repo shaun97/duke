@@ -9,10 +9,24 @@ import java.text.ParseException;
 public class Parser {
     private TaskList l;
 
+    /**
+     * Parser class has a constructor that takes in
+     * a TaskList
+     *
+     * @param l
+     */
+
     public Parser(TaskList l) {
         this.l = l;
     }
 
+    /**
+     *  This function takes in a String Command and
+     *  determines what command is given before executing
+     *  the respective functions.
+     *
+     * @param Command
+     */
     public void Logic(String Command) {
 
         try {

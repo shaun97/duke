@@ -15,6 +15,11 @@ public class Storage {
         this.loadData();
     }
 
+    /**
+     * This function opens the txt file and unpacks the data from the
+     * txt file and loads it into the program. If the file does not exist,
+     * it creates it for the program to store data there.
+     */
     public void loadData() { //if no file
         try {
             File file = new File("data/duke.txt");
@@ -47,6 +52,11 @@ public class Storage {
         }
     }
 
+    /**
+     * This function updates the txt file data storage with the latest
+     * list in the program. It rewrites the text file with the latest
+     * data.
+     */
     public void updateFile() {
         try {
             File file = new File("data/duke.txt");

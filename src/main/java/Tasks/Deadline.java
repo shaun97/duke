@@ -16,6 +16,12 @@ public class Deadline extends Task {
         storeDate(by);
     }
 
+    /**
+     * This function takes in the string of the date and converts it into
+     * a date class.
+     *
+     * @param by
+     */
     public void storeDate(String by) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy HHmm");
         Date convertedDate = new Date();
@@ -26,11 +32,21 @@ public class Deadline extends Task {
         date = convertedDate;
     }
 
+    /**
+     * This function converts the Deadline task into the format for storage.
+     *
+     * @return
+     */
     @Override
     public String toStore() {
         return "D~" + (super.getIsDone() ? "1~" : "0~") + super.getDescription() + "/by " + by;
     }
 
+    /**
+     * This function prints out this task to the command line.
+     *
+     * @return
+     */
     public String toString() {
         return "[D]" + super.getStatusIcon() + super.getDescription() + " (by: " + by + ")";
     }

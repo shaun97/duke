@@ -15,6 +15,9 @@ public class UI {
         Interaction(in);
     }
 
+    /**
+     * This function prints out the DUKE welcome message
+     */
     public void DukeWelcome() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -25,6 +28,11 @@ public class UI {
         System.out.println("Hello! I'm Duke\nWhat can I do for you?");
     }
 
+    /**
+     * This function handles the input from the user.
+     *
+     * @param in
+     */
     public void Interaction(Scanner in) {
         TaskList l = new TaskList();
         Parser P = new Parser(l);
