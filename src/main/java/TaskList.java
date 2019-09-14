@@ -42,7 +42,6 @@ public class TaskList {
     /**
      * This function prints out all the tasks in the list. Calls the
      * toString() of each task to print out the relevant details
-     *
      */
     public void listTask() {
         System.out.println("    Here are the tasks in your list:");

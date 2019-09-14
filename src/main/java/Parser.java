@@ -25,9 +25,9 @@ public class Parser {
     }
 
     /**
-     *  This function takes in a String Command and
-     *  determines what command is given before executing
-     *  the respective functions.
+     * This function takes in a String Command and
+     * determines what command is given before executing
+     * the respective functions.
      *
      * @param Command is the raw command that is inputted by the user
      */
