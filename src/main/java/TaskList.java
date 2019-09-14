@@ -3,6 +3,10 @@ import Tasks.Task;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents the data structure of the tasks added to duke.
+ * Uses an ArrayList to store the list.
+ */
 public class TaskList {
     List<Task> l = new ArrayList<>();
     Storage f = new Storage(l);
@@ -11,7 +15,7 @@ public class TaskList {
      * This function adds a task into the ArrayList of tasks, calls the function to update
      * the txt file and prints out the relevant reply.
      *
-     * @param t
+     * @param t is of task type of the task to add
      */
     public void addTask(Task t) {
         l.add(t);
@@ -25,7 +29,7 @@ public class TaskList {
      * This program takes in an index and marks the corresponding task as done,
      * it then updates the file and prints out the relevant reply
      *
-     * @param index
+     * @param index is the index of the task that is completed
      */
 
     public void markDone(int index) {
@@ -36,7 +40,9 @@ public class TaskList {
     }
 
     /**
-     * This function prints out all the tasks in the list.
+     * This function prints out all the tasks in the list. Calls the
+     * toString() of each task to print out the relevant details
+     *
      */
     public void listTask() {
         System.out.println("    Here are the tasks in your list:");

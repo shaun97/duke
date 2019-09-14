@@ -1,18 +1,16 @@
-import Tasks.Deadline;
-import Tasks.Event;
-import Tasks.Task;
-import Tasks.Todo;
-
 import java.util.Scanner;
 
+/**
+ * Class that deals with the printing of the welcome message
+ * and the interaction with the user.
+ */
 public class UI {
     private Parser P;
     private TaskList l;
 
     public UI() {
-        Scanner in = new Scanner(System.in);
         DukeWelcome();
-        Interaction(in);
+        Interaction();
     }
 
     /**
@@ -29,11 +27,11 @@ public class UI {
     }
 
     /**
-     * This function handles the input from the user.
-     *
-     * @param in
+     * This function handles the interaction with the user and instantiates
+     * the list of tasks
      */
-    public void Interaction(Scanner in) {
+    public void Interaction() {
+        Scanner in = new Scanner(System.in);
         TaskList l = new TaskList();
         Parser P = new Parser(l);
         while (true) {

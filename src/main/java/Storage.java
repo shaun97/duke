@@ -7,9 +7,19 @@ import java.io.*;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This classes handles the logic of storing all the data
+ * into a txt file. Data is stored in this format
+ * {Task Type}~{Status}~{Description}
+ */
 public class Storage {
     List<Task> l;
 
+    /**
+     * Constructor function for this class
+     *
+     * @param l is the task list that gets parsed in
+     */
     public Storage(List<Task> l) {
         this.l = l;
         this.loadData();

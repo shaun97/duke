@@ -6,6 +6,10 @@ import Tasks.Todo;
 
 import java.text.ParseException;
 
+/**
+ * This class handles the logic of the commands
+ * and decide which function to call
+ */
 public class Parser {
     private TaskList l;
 
@@ -13,7 +17,7 @@ public class Parser {
      * Parser class has a constructor that takes in
      * a TaskList
      *
-     * @param l
+     * @param l is the list of task that gets parsed in
      */
 
     public Parser(TaskList l) {
@@ -25,7 +29,7 @@ public class Parser {
      *  determines what command is given before executing
      *  the respective functions.
      *
-     * @param Command
+     * @param Command is the raw command that is inputted by the user
      */
     public void Logic(String Command) {
 
