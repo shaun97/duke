@@ -1,9 +1,3 @@
-import Tasks.Deadline;
-import Tasks.Event;
-import Tasks.Task;
-import Tasks.Todo;
-
-import java.util.*;
 
 /**
  * The Duke program implements a CLI application that is

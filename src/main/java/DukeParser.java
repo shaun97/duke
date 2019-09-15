@@ -4,13 +4,11 @@ import Tasks.Event;
 import Tasks.Task;
 import Tasks.Todo;
 
-import java.text.ParseException;
-
 /**
  * This class handles the logic of the commands
  * and decide which function to call
  */
-public class Parser {
+public class DukeParser {
     private TaskList l;
 
     /**
@@ -20,7 +18,7 @@ public class Parser {
      * @param l is the list of task that gets parsed in
      */
 
-    public Parser(TaskList l) {
+    public DukeParser(TaskList l) {
         this.l = l;
     }
 

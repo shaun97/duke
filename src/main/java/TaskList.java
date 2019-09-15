@@ -40,6 +40,13 @@ public class TaskList {
     }
 
     /**
+     * This function gets the length of the task list
+     * @return int of the size of the tasklist
+     */
+    public int getLen() {
+        return l.size();
+    }
+    /**
      * This function prints out all the tasks in the list. Calls the
      * toString() of each task to print out the relevant details
      */

@@ -1,7 +1,7 @@
 package Tasks;
 
 /**
- * To-do class extends task and ovverides the
+ * To-do class extends task and overrides the
  * toString() function to something specific to to-do
  */
 public class Todo extends Task {

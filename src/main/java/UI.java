@@ -5,7 +5,7 @@ import java.util.Scanner;
  * and the interaction with the user.
  */
 public class UI {
-    private Parser P;
+    private DukeParser P;
     private TaskList l;
 
     public UI() {
@@ -33,7 +33,7 @@ public class UI {
     public void Interaction() {
         Scanner in = new Scanner(System.in);
         TaskList l = new TaskList();
-        Parser P = new Parser(l);
+        DukeParser P = new DukeParser(l);
         while (true) {
             String s = in.nextLine();
             P.Logic(s);
